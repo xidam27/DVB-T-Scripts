@@ -1,0 +1,16 @@
+<html>
+
+<head>
+    <link href="http://vjs.zencdn.net/5.4/video-js.css" rel="stylesheet">
+
+    <script src="http://vjs.zencdn.net/5.4/video.js"></script>
+    <script src="http://videojs.github.io/videojs-contrib-hls/node_modules/videojs-contrib-hls/dist/videojs.hls.min.js"></script>
+</head>
+
+
+
+
+{% block content %} {% endblock %}
+
+
+</html>

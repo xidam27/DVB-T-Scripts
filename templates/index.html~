@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>hls.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .hlsjs {
+      position: relative;
+      width: 70%;
+    }
+    .ratio {
+      position: absolute;
+      padding-top: 75%;
+    }
+    video {
+      background-color: #ccc;
+      width: 100%;
+    }
+
+  </style>
+
+<script src="scripts/hls.js"></script>
+
+  <script>
+   var config = {
+      autoStartLoad : false,
+      capLevelToPlayerSize: true,
+      debug : false
+    };
+
+
+
+
+ {% set count = 0 %}
+window.onload = function () {
+  if (Hls.isSupported()) {
+    {% for i,n in streamlst.items() %}{% set count = count +1 %}video{{ i }} = document.getElementById("video{{ i }}"),
+       {% endfor %}{% for i in streamlst %}{% set count = count +1 %} hls{{count}} = new Hls(config){% if not loop.last %},{% else %};{% endif %}
+       {% endfor %}
+    {% for i,n in streamlst.items() %}{% set count = count +1 %}
+
+       hls{{count}}.on(Hls.Events.MEDIA_ATTACHED, function () {
+           hls{{count}}.loadSource("http://hls.no-ip.org/content/{{n[0]}}/playlist.m3u8");
+
+       });
+       hls{{count}}.on(Hls.Events.MANIFEST_PARSED, function(event,data) {
+                console.log("manifest loaded, found " + data.levels.length + " quality level");
+       });
+       hls{{count}}.on(Hls.Events.MANIFEST_PARSED, function(event,data) {
+                    console.log("manifest loaded, found " + data.levels.length + " quality level");
+       });
+
+    {% endfor %}{% for i,n in streamlst.items() %}{% set count = count +1 %}hls{{count}}.attachMedia(video{{i}});
+              hls{{count}}.startLoad();
+    {% endfor %}
+  }
+};
+</script>
+
+</head>
+
+<body>
+  <h1>vanczak sanyi test</h1>
+
+{% for i,n in streamlst.items() %}
+  <h2>{{n[0]}}</h2>
+  <div class="hlsjs">
+    <video id="video{{i}}" controls onclick="video{{i}}.play()"></video>
+    <div class="ratio"></div>
+  </div>
+  <button onclick="hls.startLoad()">Click me</button>
+    <button onclick="hls{{i}}.startLoad(); video{{i}}.play()">Likk me</button>
+{% endfor %}
+
+
+
+  </div>
+
+</body>
+</html>

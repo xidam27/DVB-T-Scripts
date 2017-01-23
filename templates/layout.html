@@ -1,0 +1,18 @@
+{% extends "player.html" %}
+
+{% block content %}
+
+{% for n in streamlst %}
+  <p>{{ n[2] }}</p>
+<video id="{{ n[2] }}" width=320 height=200 class="video-js vjs-default-skin" controls>
+  <source
+       src="http://dedico.hu:8080/content/{{ n[2] }}/playlist.m3u8"
+       type="application/x-mpegURL">
+</video>
+
+<script>
+ var player = videojs('{{ n[2] }}');
+</script>
+{% endfor %}
+
+{% endblock %}

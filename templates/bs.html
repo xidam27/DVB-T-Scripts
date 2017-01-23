@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+	  background-color: #f2f2f2;
+      padding: 25px;
+    }
+    .hlsjs {
+      position: relative;
+      width: 70%;
+    }
+    .ratio {
+      position: absolute;
+      padding-top: 75%;
+    }
+    video {
+      background-color: #ccc;
+      width: 100%;
+    }
+
+
+  </style>
+
+<script src="scripts/hls.js"></script>
+
+<script>
+ var config = {
+     autoStartLoad : true,
+     capLevelToPlayerSize: true,
+     debug : false
+ };
+
+
+
+ {% set count = 0 %}
+window.onload = function () {
+  if (Hls.isSupported()) {
+    {% for i,n in streamlst.items() %}{% set count = count +1 %}video{{ i }} = document.getElementById("video{{ i }}"),
+       {% endfor %}{% for i in streamlst %}{% set count = count +1 %} hls{{count}} = new Hls(config){% if not loop.last %},{% else %};{% endif %}
+       {% endfor %}
+    {% for i,n in streamlst.items() %}{% set count = count +1 %}
+
+       hls{{count}}.on(Hls.Events.MEDIA_ATTACHED, function () {
+           hls{{count}}.loadSource("http://hls.no-ip.org/content/{{n[0]}}/playlist.m3u8");
+
+       });
+       hls{{count}}.on(Hls.Events.MANIFEST_PARSED, function(event,data) {
+                console.log("manifest loaded, found " + data.levels.length + " quality level");
+       });
+       hls{{count}}.on(Hls.Events.MANIFEST_PARSED, function(event,data) {
+                    console.log("manifest loaded, found " + data.levels.length + " quality level");
+       });
+
+    {% endfor %}{% for i,n in streamlst.items() %}{% set count = count +1 %}hls{{count}}.attachMedia(video{{i}});
+              hls{{count}}.startLoad();
+    {% endfor %}
+  }
+
+
+};
+
+
+</script>
+
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>HIPPIX</h1>
+    <p>Video On Demand</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Csatornak</a></li>
+        <li><a href="#">Musorfuzet</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% set count = 1 %}
+{% for column in streamlst.items() | batch(4) -%}
+ <div class="container">
+  <div class="row">
+    {%- for i,n in column %}
+    <div class="col-sm-3">
+      <div class="panel panel-danger">
+        <div class="panel-heading">{{ n[0] }}</div>
+          <div class="panel-body">
+           <video id="video{{i}}" controls></video>
+           <button onclick="hls{{count}}.startLoad(); video{{i}}.play()">Likk me</button>
+          </div>
+        <div class="panel-footer">Itt lesz a futo musor neve</div>
+      </div>
+    </div>
+    {% set count = count +1 %}{%- endfor %}
+  </div>
+</div>
+{%- endfor %}
+
+{% for i,n in streamlst.items() %}
+
+{% endfor  %}
+
+
+<footer class="container-fluid text-center">
+  <p>Online Store Copyright</p>
+  <form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form>
+</footer>
+
+</body>
+</html>

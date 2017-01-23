@@ -1,0 +1,40 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sun Mar 27 09:49:15 2016
+;; Desktop file format version 206
+;; Emacs version 24.3.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("mumu" "mumucof"))
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("/home/xx/DVB-scripts/" "/home/xx/DVB-scripts/genPlayer.py" "/home/xx/DVB-scripts/createMumuConfig.py"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/xx/DVB-scripts/createMumuConfig.py"
+  "createMumuConfig.py"
+  'python-mode
+  '(global-auto-revert-mode auto-complete-mode autopair-mode yas-minor-mode whitespace-mode flycheck-mode)
+  1587
+  '(1914 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/xx/DVB-scripts/genPlayer.py"
+  "genPlayer.py"
+  'python-mode
+  '(global-auto-revert-mode auto-complete-mode autopair-mode yas-minor-mode whitespace-mode flycheck-mode)
+  62
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+

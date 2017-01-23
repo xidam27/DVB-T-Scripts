@@ -1,0 +1,113 @@
+import os, os.path
+import sqlite3
+from collections import defaultdict
+
+mhz = dict()
+mumu_conf = dict()
+
+channels = '/usr/local/etc/channels.list'
+mumu_config_default_config_file = '/etc/default/mumudvb'
+devpath = '/dev/dvb'
+mumu_conf_template = '''card=%card
+freq=%freq
+
+autoconfiguration=full
+unicast=1
+ip_http=0.0.0.0 :  IP address for accepting the HTTP requests
+port_http=%port    : Listening port
+multicast_ipv4=1
+autoconf_sid_list=%sids
+#tuner=%dev
+'''
+
+
+fh = open(channels)
+conn = sqlite3.connect('/home/xx/channels.sqlite3')
+cur = conn.cursor()
+
+for line in fh:
+    values = line.strip().split(':')
+    if int(values[10]) > 1:
+        sid = values[12]
+        cur.execute('SELECT name,sid FROM channels WHERE name = ?', (values[0], ))
+        try:
+            name = cur.fetchone()[0]
+        except:
+            cur.execute('''INSERT INTO channels (name,freq,sid)
+            VALUES (?, ?, ?)''', (values[0],int(values[1])/1000,sid))
+conn.commit()
+
+string = 'SELECT name,sid,freq FROM channels WHERE status = 1'
+
+
+freqs = dict()
+
+for row in cur.execute(string): # adding SIDs to their corresponding freq dictionary
+    freq = row[2]
+    sid = row[1]
+    if freq in freqs:
+        # append the new number to the existing array at this slot
+        freqs[freq].append(sid)
+    else:
+        # create a new array in this slot
+        freqs[freq] = [sid]
+
+
+
+def findtuners(devpath):
+    adapters = list()
+    for tuner in os.walk(devpath):
+        tun = tuner[0]
+        if tun.find("adapter") > -1:
+            adapters.append(tun)
+    return adapters
+tuners = findtuners(devpath)
+tuners.sort()
+
+
+
+
+def generateConfig():
+    i = 0
+    global mumu_conf_template
+    for mhz in freqs:
+        if i >= len(tuners): break
+        dev = tuners[i][-1:] # get the int id from /dev/dvb/adapterX
+        sids = freqs[mhz]
+        sids = ' '.join(str(x) for x in sids) # iterating the sids into a joined comma separated string
+        conf = mumu_conf_template.replace('%freq', str(mhz))
+        conf = conf.replace('%card', dev)
+        conf = conf.replace('%port', str(8000 + i))
+        conf = conf.replace('%sids', str(sids))
+        conf = conf.replace('%dev', tuners[i])
+        mumu_conf['tuner'+str(i)] = conf
+        i = i + 1
+    return mumu_conf
+mumu_conf = generateConfig()
+
+
+adapters= ' '.join(str(x) for x in range(len(tuners)))
+mumu_default_config = """
+DAEMONUSER="_mumudvb"
+ADAPTERS="{}"
+""".format(adapters)
+
+
+
+for adapter in range(len(tuners)):
+    mumu_config_file="/etc/mumudvb/mumu_adapter{}.conf".format(adapter)
+    mumu_default_config = mumu_default_config + \
+        "MUMUDVB_CONF_{}={}\n".format(adapter,mumu_config_file)
+    fh = open(mumu_config_file,'w+l')
+    fh.write(mumu_conf['tuner'+str(adapter)])
+    fh.close()
+
+
+fh = open(mumu_config_default_config_file,'w+')
+fh.write(mumu_default_config)
+fh.close()
+
+#for tuner,config in mumu_conf.items():
+#    print config
+
+#print mumu_default_config

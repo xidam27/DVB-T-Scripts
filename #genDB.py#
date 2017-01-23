@@ -1,0 +1,100 @@
+#import xml.etree.ElementTree as ET
+import os
+import sqlite3
+import urllib
+import json
+pidPath = '/var/run/mumudvb/'
+oldChannelName = None
+
+conn = sqlite3.connect('/home/xx/channels.sqlite3')
+cur = conn.cursor()
+query = 'SELECT name, sid FROM channels WHERE status = {}'.format('1')
+cur.execute(query)
+
+
+# capturing all channel info from /var/run/mumudvb/ then from XML and do some housekeeping in the DB.
+
+
+
+def getTunerStats():
+    adapter = dict()
+    ik = {}
+    channel = {}
+    for i in range(len([f for f in os.walk(pidPath).next()[2] if f.startswith("mumudvb_adapter")])):
+        url = 'http://localhost:800{}/monitor/state.xml'.format(i) # hivjuk meg a state.xml
+        xml = urllib.urlopen(url).read()
+
+        tree = ET.fromstring(xml)
+        tunerID = tree.get('card')
+        xx = 0
+        for a in tree:
+            ik[a.tag] = a.text
+            if len(a) > 0:
+                xx = xx + 1
+                ik[a.tag] = {}
+                ik2 = {}
+                for b in a:
+                    ik2[b.tag] = b.text
+                channel[xx] = ik2
+            ik[a.tag]=channel
+            #print a.tag, ik2
+        adapter[tunerID] = (ik)
+
+    return json.dumps(adapter)
+getTunerStats()
+
+
+
+
+for pid in os.listdir(pidPath): # looping through /var/run/mumudvb/*
+    if pid.startswith("channels"): # grepping for channels in files name
+        for line in open(pidPath+pid): # looping through /var/run/mumudvb/channels_* 239.100.1.0:1234:ITV4:FullyUnscrambled
+            i = -1 # starting adapter number
+            for x in [f for f in os.walk(pidPath).next()[2] if f.startswith("mumudvb_adapter")]: #repeating loop for the same line for each adapter (two in test case)
+                i = i + 1 # incrementaljuk a portnumber
+                streamlst = line.split(':')
+                channelName = streamlst[2] # first channel declaration
+                # if channelName == "ITV4":
+                # channelName = "ITV3"
+                url = 'http://localhost:800{}/monitor/state.xml'.format(i) # hivjuk meg a state.xml
+                fh = urllib.urlopen(url)
+                xml = fh.read()
+                tree = ET.fromstring(xml)
+                XMLchannels = tree.findall('channel')
+                found = False
+                for XMLchannel in XMLchannels: # looping channel node in XML for of the first URL
+                    channelXMLname = XMLchannel.find('name').text
+                    channelXMLsid = XMLchannel.find('service_id').text
+                    if channelXMLname == channelName :
+                        #print channelXMLname, '=', channelName
+                        found = True
+                        oldChannelName = channelName
+                        # getting the channel_id from the DB
+                        query = 'SELECT * FROM channels WHERE name = "{}" AND sid = {}'.format(channelName,channelXMLsid)
+                        cur.execute(query)
+                        channel_id = cur.fetchone()[0]
+
+                        for pidXML in XMLchannel.find('pids'): # assigning pids to channels and populating types
+                            pidType = pidXML.text
+                            query = 'SELECT * FROM types WHERE name = "{}"'.format(pidType)
+                            cur.execute(query)
+                            if cur.fetchone() is None:
+                                query = 'INSERT OR IGNORE INTO types (name) VALUES ( "{}" )'.format(pidType)
+                                cur.execute(query)
+                            query = 'SELECT * FROM types WHERE name = "{}"'.format(pidType)
+                            cur.execute(query)
+                            try:
+                                type_id = cur.fetchone()[0]
+                            except:
+                                pass
+                            pid = pidXML.attrib['number']
+                            lang = pidXML.attrib['language']
+                            query = 'INSERT OR IGNORE INTO pids (pid,lang,channel_id,type_id) VALUES ("{}", "{}", "{}", "{}");'.format(pid,lang,channel_id, type_id)
+                            cur.execute(query)
+
+
+
+            if oldChannelName != channelName: # az elozo ciklusban keresett csatorna nevet nem sikerult azonositani egyik XML-ben szereplo csatorna nevevel
+                #print channelName,"Nem talaltam az XML-ben"
+                pass
+conn.commit()
