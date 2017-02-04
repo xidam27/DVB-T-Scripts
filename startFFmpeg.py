@@ -3,7 +3,7 @@ import sqlite3
 import sys, getopt
 
 pidPath = "/var/run/mumudvb/"
-conn = sqlite3.connect('/home/xx/channels.sqlite3')
+conn = sqlite3.connect('channels.sqlite3')
 cur = conn.cursor()
 
 mode = int(sys.argv[1])
@@ -20,7 +20,7 @@ def findPid():
                 cmd = '''
 screen -dmS {} \\
 sh -c \'mkdir -p /var/www/content/{}; \\
-/root/bin/ffmpeg -i "udp://@{}?overrun_nonfatal=1&fifo_size=50000000" \\
+~/bin/ffmpeg -i "udp://@{}?overrun_nonfatal=1&fifo_size=50000000" \\
 -flush_packets 0 \\
 -c:v libx264  \\
 -preset slow \\
@@ -43,7 +43,7 @@ sh -c \'mkdir -p /var/www/content/{}; \\
 strm[0]+':'+strm[1],\
 channelName,\
 channelName)
-                cmd = '''screen -dmS {} sh -c 'export FFREPORT=file=/tmp/{}_ffreport.log:level=32; mkdir -p /var/www/content/{}; /root/bin/ffmpeg -report -nostats \\
+                cmd = '''screen -dmS {} sh -c 'export FFREPORT=file=/tmp/{}_ffreport.log:level=32; mkdir -p /var/www/content/{}; ~/bin/ffmpeg -report -nostats \\
 -i "udp://localhost:{}?overrun_nonfatal=1&fifo_size=50000000&pkt_size=1316&buffer_size=400000" \\
 -flush_packets 0 \\
 -threads 0 \\
@@ -65,7 +65,7 @@ channelName)
 
                 cmd2 = '''
 screen -dmS {} sh -c \'mkdir -p /var/www/content/{}; \\
-/root/bin/ffmpeg -i "udp://@{}?overrun_nonfatal=1&fifo_size=50000" \\
+~/bin/ffmpeg -i "udp://@{}?overrun_nonfatal=1&fifo_size=50000" \\
 -flush_packets 0 \\
 -c:v copy \\
 -c:a copy \\
@@ -88,7 +88,7 @@ findPid()
 
 
 """
-cmd = 'screen -dm /root/bin/ffmpeg -i \
+cmd = 'screen -dm ~/bin/ffmpeg -i \
 "udp://@{}?overrun_nonfatal=1&fifo_size=50000000" \
 -flush_packets 0 -c:v libx264 -preset fast -c:a copy -map 0:0 \
 -map 0:1 -flags -global_header -f hls -segment_time 10 -segment_format mpegts \

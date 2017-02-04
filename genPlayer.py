@@ -5,9 +5,9 @@ import sqlite3
 env = Environment(loader=FileSystemLoader('templates'))
 template = env.get_template('index.html')
 
-conn = sqlite3.connect('/home/xx/channels.sqlite3')
+conn = sqlite3.connect('channels.sqlite3')
 cur = conn.cursor()
-query = 'SELECT id, name, sid FROM channels WHERE fav = {} LIMIT 40'.format('1')
+query = 'SELECT id, name, sid FROM channels WHERE fav = {} LIMIT 1'.format('1')
 cur.execute(query)
 
 streamlst2 = dict()

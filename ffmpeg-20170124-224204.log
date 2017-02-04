@@ -1,0 +1,176 @@
+ffmpeg started on 2017-01-24 at 22:42:04
+Report written to "ffmpeg-20170124-224204.log"
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] SPS unavailable in decode_picture_timing
+[h264 @ 0x3d19ee0] non-existing PPS 0 referenced
+[h264 @ 0x3d19ee0] decode_slice_header error
+[h264 @ 0x3d19ee0] no frame!
+[h264 @ 0x3d19ee0] mmco: unref short failure
+[h264 @ 0x3d19ee0] mmco: unref short failure
+[mpegts @ 0x3d13be0] Could not find codec parameters for stream 2 (Unknown: none ([17][0][0][0] / 0x0011)): unknown codec
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+[mpegts @ 0x3d13be0] Could not find codec parameters for stream 4 (Unknown: none ([5][0][0][0] / 0x0005)): unknown codec
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+[mpegts @ 0x3d13be0] Could not find codec parameters for stream 5 (Unknown: none ([11][0][0][0] / 0x000B)): unknown codec
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+[mpegts @ 0x3d13be0] Could not find codec parameters for stream 6 (Unknown: none ([11][0][0][0] / 0x000B)): unknown codec
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+[mpegts @ 0x3d13be0] Could not find codec parameters for stream 7 (Unknown: none ([5][0][0][0] / 0x0005)): unknown codec
+Consider increasing the value for the 'analyzeduration' and 'probesize' options
+Input #0, mpegts, from 'http://192.168.1.105:4028/bysid/17540':
+  Duration: N/A, start: 33429.577633, bitrate: N/A
+  Program 17540 
+    Metadata:
+      service_name    : BBC ONE HD
+      service_provider: 
+    Stream #0:0[0x19c9]: Video: h264 (High) ([27][0][0][0] / 0x001B), yuv420p(tv, bt709, top first), 1920x1080 [SAR 1:1 DAR 16:9], 25 fps, 25 tbr, 90k tbn, 50 tbc
+    Stream #0:1[0x19ca](eng): Audio: aac_latm (LC) ([17][0][0][0] / 0x0011), 48000 Hz, 5.1, fltp
+    Stream #0:2[0x19ce](eng): Unknown: none ([17][0][0][0] / 0x0011) (visual impaired)
+    Stream #0:3[0x19cd](eng): Subtitle: dvb_subtitle ([6][0][0][0] / 0x0006)
+    Stream #0:4[0x19fa]: Unknown: none ([5][0][0][0] / 0x0005)
+    Stream #0:5[0x1c86]: Unknown: none ([11][0][0][0] / 0x000B)
+    Stream #0:6[0x1c97]: Unknown: none ([11][0][0][0] / 0x000B)
+    Stream #0:7[0x1c66]: Unknown: none ([5][0][0][0] / 0x0005)
+[libx264 @ 0x3d76960] using SAR=1/1
+[libx264 @ 0x3d76960] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX
+[libx264 @ 0x3d76960] profile Constrained Baseline, level 4.0
+[segment @ 0x420fd00] Failed to open segment '/var/www/content/BBC_ONE_HD_2/segment_000.ts'
+Could not write header for output file #0 (incorrect codec parameters ?): Permission denied
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac_latm (native) -> aac (libfdk_aac))
+
+Exiting normally, received signal 2.
