@@ -1,0 +1,1 @@
+SUBSYSTEM=="dvb", KERNELS=="0000:00:14.0", ATTRS{device}=="0x1e31", PROGRAM="/bin/sh -c 'K=%k; K=$${K#dvb}; printf dvb/adapters/0/%%s $${K#*.}'", SYMLINK+="%c"

@@ -1,0 +1,21 @@
+[Unit]
+#Description=OpenBSD Secure Shell server
+#After=network.target auditd.service
+#ConditionPathExists=!/etc/ssh/sshd_not_to_be_run
+
+[Service]
+EnvironmentFile=-/etc/default/mumudvb
+ExecStartPre=/bin/mkdir -p /var/run/mumudvb/
+ExecStartPre=/bin/chown -R _mumudvb /var/run/mumudvb/
+ExecStart=/usr/local/bin/mumudvb -c $MUMUDVB_CONF_0 
+ExecReload=/bin/kill -HUP $MAINPID
+#Type=forking
+PIDFile=/var/run/mumudvb/mumudvb_adapter0_tuner0.pid
+KillMode=process
+Restart=on-failure
+RestartPreventExitStatus=255
+Type=notify
+
+[Install]
+WantedBy=multi-user.target
+#Alias=.service
