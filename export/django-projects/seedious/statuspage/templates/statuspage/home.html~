@@ -1,0 +1,7 @@
+{% extends "statuspage/header.html" %}
+
+{% block content %}
+
+<p> this is the status page </p>
+
+{% endblock %}
